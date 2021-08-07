@@ -1,0 +1,82 @@
+{
+  "openapi":"3.0.0",
+  "info":{
+    "description":"This is an API for authentication",
+    "version":"1.0.0",
+    "contact": {
+      "email": "dani@rocketseat.com.br "
+    }
+  },
+  "paths":{
+    "/users":{
+      "post":{
+        "tags":["Users"],
+        "description":"Create a user",
+        "summary":"Create a new user",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"Object",
+                "properties":{
+                  "name":{ "type": "string"},
+                  "email":{ "type": "string"}
+                },
+                "example":{
+                  "name":"test",
+                  "email":"example@gmail.com"
+                }
+              }   
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"Created"
+          },
+          "400":{
+            "description":"This email is already taken!"
+          }
+        }
+      },
+      "get":{
+        "tags":["Users"],
+        "description":"List all users",
+        "summary":"List all users",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"Object",
+                "properties":{
+                  "user_id":{"type":"string"}
+                },
+                "example":{
+                  "user_id":"12"
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200":{
+            "description":"Success",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"Array",
+                  "items":{
+                    "type":"Object",
+                    "properties":{
+                      "name":{"type":"string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
